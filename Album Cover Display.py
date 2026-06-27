@@ -13,6 +13,8 @@ from adafruit_display_shapes.circle import Circle
 from adafruit_display_text import label
 from io import BytesIO
 
+#I Will Change All "MY_" to the actual data once I physically have the ESP32-S3 board
+
 WIFI_SSID = "MY_WIFI_SSID"
 WIFI_PASSWORD = "My_WIFI_PASSWORD"
 

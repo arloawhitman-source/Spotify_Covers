@@ -27,6 +27,29 @@ When turned on the Pico connects to your WiFi. Then it talks to Spotify using a 
 * M2x10 screw (x9)
 * M3x6 screw (x4)
 
+## Bill of Materials
+
+| Component | Qty | Price | Link |
+|---|---|---|---|
+| 256x WS2815 LEDs (60 LEDs/m strips) | 1 | $41.99 | [Buy](https://www.btf-lighting.com/products/ws2815-rgb-addressable-led-strip-dc12v?variant=47607344726242) |
+| Polypropylene Sheet 0.5mm (132.4mm × 14.5mm) | 32 | $19.70 | [Buy](https://www.ebay.com/itm/406446159505) |
+| 5mm Aluminum Base Plate | 1 | Depends On Thickness | Depends On Thickness And Location |
+| Level Shifter 74HCT125 (3.3V → 5V) | 1 | $0.92 | [Buy](https://www.digikey.com/en/products/detail/texas-instruments/SN74HCT125N/13483078) |
+| 26 AWG Wire (Black, Red, Green) | 3 | $13.95 | [Buy](https://www.adafruit.com/product/2513) |
+| Heatsink (300×140×20mm) | 1 | $28.09 | [Buy](https://www.walmart.com/ip/Aluminum-Large-Heatsink-300x140x20mm-Heat-Sink-Cooling-Radiators-for-Computer-LED/19318660156) |
+| F0.5A Fuse | 16 | $14.77 | [Buy](https://www.ebay.com/itm/358421553078) |
+| Wire Shrink Wrap Kit | 1 | $9.95 | [Buy](https://www.adafruit.com/product/4559) |
+| 16 AWG Wire (Red, Black) | 1 | $12.18 | [Buy](https://www.remingtonindustries.com/hook-up-wire/hook-up-wire-16-awg-stranded-solid-10-colors-7-sizes-available/?sku=16UL1007SLDBLA25) |
+| LM2596 Voltage Regulator | 1 | $0.71 | [Buy](https://www.pcb-hero.com/products/141892) |
+| Raspberry Pi Pico 2W | 1 | $7.70 | [Buy](https://www.sparkfun.com/raspberry-pi-pico-2-w.html?src=raspberrypi) |
+| Power Supply Unit (Mean Well LRS-100-12) | 1 | $16.50 | [Buy](https://www.walmart.com/ip/Mean-Well-LRS-100-12-Power-Supply-100W-12V/5585345774) |
+| C1 100nF Capacitor | 1 | $1.06 | [Buy](https://www.digikey.com/en/products/detail/tdk/FK20C0G1H104JN000/2050105) |
+| 10A Blade Fuse | 1 | $4.86 | [Buy](https://www.walmart.com/ip/Cooper-Bussman-ATC-10A-Blade-Fuses-5-Count/20971317) |
+| 16 AWG Terminal Connector | 2 | $4.98 | [Buy](https://www.lowes.com/pd/Utilitech-22-16-Ring-Red-20-Count/5017987455) |
+| 16 AWG Fuse Holder (Waterproof, ATC/ATO) | 1 | $9.99 | [Buy](https://www.lowes.com/pd/Unique-Bargains-Fuse-Holder-In-line-16AWG-Waterproof-Fuse-Holder-Black-for-ATC-ATO-Fuse/9307036) |
+
+**Estimated Total: ~$187.35**
+
 ## How To Build
 
 ### Step 1

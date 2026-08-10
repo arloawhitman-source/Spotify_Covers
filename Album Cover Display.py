@@ -31,7 +31,7 @@ BRIGHTNESS = 0.6
 TOKEN_URL = "https://accounts.spotify.com/api/token"
 CURRENTLY_PLAYING_URL = "https://api.spotify.com/v1/me/player/currently-playing"
 
-# ── WiFi ──────────────────────────────────────────────────────────────────────
+# Wifi Connection
 print("Connecting to WiFi...")
 wifi.radio.connect(WIFI_SSID, WIFI_PASSWORD)
 print(f"Connected: {wifi.radio.ipv4_address}")
@@ -40,7 +40,7 @@ pool = socketpool.SocketPool(wifi.radio)
 ssl_ctx = ssl.create_default_context()
 requests = adafruit_requests.Session(pool, ssl_ctx)
 
-# ── NeoPixel strip ────────────────────────────────────────────────────────────
+# Neo Pixel
 pixels = neopixel.NeoPixel(
     DATA_PIN,
     NUM_PIXELS,
@@ -49,7 +49,7 @@ pixels = neopixel.NeoPixel(
     pixel_order=neopixel.GRB
 )
 
-# ── Token handling ────────────────────────────────────────────────────────────
+# Spotify Token
 access_token = None
 token_expiry = 0
 
@@ -79,7 +79,7 @@ def get_valid_token():
     return access_token
 
 
-# ── Spotify API ───────────────────────────────────────────────────────────────
+# Spotify API
 def get_currently_playing():
     try:
         token = get_valid_token()
@@ -122,7 +122,7 @@ def extract_art_url(playback):
     return image["url"], bool(playback.get("is_playing"))
 
 
-# ── Display helpers ───────────────────────────────────────────────────────────
+# Display
 def show_idle():
     """Turn all pixels off when nothing is playing."""
     pixels.fill((0, 0, 0))
@@ -176,7 +176,7 @@ def download_and_show_art(url):
         return False
 
 
-# ── Main loop ─────────────────────────────────────────────────────────────────
+# Display Loop
 current_art_url = None
 last_poll = -POLL_SECONDS
 

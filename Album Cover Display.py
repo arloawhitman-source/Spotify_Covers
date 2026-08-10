@@ -18,10 +18,8 @@ from io import BytesIO
 WIFI_SSID = "MY_WIFI_SSID"
 WIFI_PASSWORD = "My_WIFI_PASSWORD"
 
-
 SPOTIFY_CLIENT_ID = "MY_CLIENT_ID"
 SPOTIFY_CLIENT_SECRET = "MY_CLIENT_SECRET"
-
 
 SPOTIFY_REFRESH_TOKEN = "MY_REFRESH_TOKEN"
 
@@ -29,7 +27,6 @@ MATRIX_WIDTH = 64
 MATRIX_HEIGHT = 64
 POLL_SECONDS = 5
 FPS = 20
-RPM = 20.0
 BRIGHTNESS = 0.6
 
 TOKEN_URL = "https://accounts.spotify.com/api/token"
@@ -126,7 +123,6 @@ display.root_group = main_group
 
 def show_idle():
     """Show a simple dark circle when nothing is playing."""
-    main_group.remove(main_group[0]) if len(main_group) > 0 else None
     bitmap = displayio.Bitmap(MATRIX_WIDTH, MATRIX_HEIGHT, 2)
     palette = displayio.Palette(2)
     palette[0] = 0x000000
@@ -148,8 +144,8 @@ def show_idle():
     main_group.append(group)
 
 
-def download_and_show_art(url, angle_deg):
-    """Download album art and display it rotated as a spinning record."""
+def download_and_show_art(url):
+    """Download album art and display it statically."""
     print(f"Downloading art: {url}")
     try:
         response = requests.get(url)
@@ -177,24 +173,13 @@ def download_and_show_art(url, angle_deg):
         return None, None
 
 
-def show_art(bitmap, palette):
-    tile = displayio.TileGrid(bitmap, pixel_shader=palette)
-    group = displayio.Group()
-    group.append(tile)
-    while len(main_group) > 0:
-        main_group.pop()
-    main_group.append(group)
-
-
 import adafruit_imageload
 
 current_art_url = None
 current_bitmap = None
 current_palette = None
 is_playing = False
-angle = 0.0
 last_poll = -POLL_SECONDS  # Poll immediately on startup
-last_frame = time.monotonic()
 
 show_idle()
 
@@ -209,7 +194,7 @@ while True:
 
         if art_url and art_url != current_art_url:
             current_art_url = art_url
-            current_bitmap, current_palette = download_and_show_art(art_url, angle)
+            current_bitmap, current_palette = download_and_show_art(art_url)
         elif not art_url:
             current_art_url = None
             current_bitmap = None
@@ -217,14 +202,5 @@ while True:
             show_idle()
 
         gc.collect()
-
-    # Update rotation angle if playing
-    delta = time.monotonic() - last_frame
-    last_frame = time.monotonic()
-
-    if is_playing and current_bitmap is not None:
-        angle = (angle + 360.0 * (RPM / 60.0) * delta) % 360.0
-
-        show_art(current_bitmap, current_palette)
 
     time.sleep(1.0 / FPS)

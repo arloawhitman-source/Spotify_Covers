@@ -1,22 +1,20 @@
 import gc
 import time
-import math
 import ssl
 import wifi
 import socketpool
 import adafruit_requests
-import board
 import displayio
-import terminalio
 from adafruit_matrixportal.matrix import Matrix
-from adafruit_display_shapes.circle import Circle
-from adafruit_display_text import label
 from io import BytesIO
+import adafruit_imageload
+import neopixel
+import board
 
-#I Will Change All "MY_" to the actual data once I physically have the ESP32-S3 board
+#I Will Change All "MY_" to the actual data once I physically have the Pico 2W
 
 WIFI_SSID = "MY_WIFI_SSID"
-WIFI_PASSWORD = "My_WIFI_PASSWORD"
+WIFI_PASSWORD = "MY_WIFI_PASSWORD"
 
 SPOTIFY_CLIENT_ID = "MY_CLIENT_ID"
 SPOTIFY_CLIENT_SECRET = "MY_CLIENT_SECRET"
@@ -25,14 +23,15 @@ SPOTIFY_REFRESH_TOKEN = "MY_REFRESH_TOKEN"
 
 MATRIX_WIDTH = 16
 MATRIX_HEIGHT = 16
+NUM_PIXELS = MATRIX_WIDTH * MATRIX_HEIGHT
+DATA_PIN = board.GP0
 POLL_SECONDS = 5
-FPS = 20
 BRIGHTNESS = 0.6
 
 TOKEN_URL = "https://accounts.spotify.com/api/token"
 CURRENTLY_PLAYING_URL = "https://api.spotify.com/v1/me/player/currently-playing"
 
-
+# ── WiFi ──────────────────────────────────────────────────────────────────────
 print("Connecting to WiFi...")
 wifi.radio.connect(WIFI_SSID, WIFI_PASSWORD)
 print(f"Connected: {wifi.radio.ipv4_address}")
@@ -41,7 +40,16 @@ pool = socketpool.SocketPool(wifi.radio)
 ssl_ctx = ssl.create_default_context()
 requests = adafruit_requests.Session(pool, ssl_ctx)
 
+# ── NeoPixel strip ────────────────────────────────────────────────────────────
+pixels = neopixel.NeoPixel(
+    DATA_PIN,
+    NUM_PIXELS,
+    brightness=BRIGHTNESS,
+    auto_write=False,
+    pixel_order=neopixel.GRB
+)
 
+# ── Token handling ────────────────────────────────────────────────────────────
 access_token = None
 token_expiry = 0
 
@@ -71,6 +79,7 @@ def get_valid_token():
     return access_token
 
 
+# ── Spotify API ───────────────────────────────────────────────────────────────
 def get_currently_playing():
     try:
         token = get_valid_token()
@@ -113,39 +122,23 @@ def extract_art_url(playback):
     return image["url"], bool(playback.get("is_playing"))
 
 
-matrix = Matrix(width=MATRIX_WIDTH, height=MATRIX_HEIGHT, bit_depth=4, serpentine=False)
-display = matrix.display
-display.brightness = BRIGHTNESS
-
-main_group = displayio.Group()
-display.root_group = main_group
-
-
+# ── Display helpers ───────────────────────────────────────────────────────────
 def show_idle():
-    """Show a simple dark circle when nothing is playing."""
-    bitmap = displayio.Bitmap(MATRIX_WIDTH, MATRIX_HEIGHT, 2)
-    palette = displayio.Palette(2)
-    palette[0] = 0x000000
-    palette[1] = 0x333333
-    cx = MATRIX_WIDTH // 2
-    cy = MATRIX_HEIGHT // 2
-    r = MATRIX_WIDTH // 2 - 2
-    for angle_deg in range(360):
-        rad = math.radians(angle_deg)
-        x = int(cx + r * math.cos(rad))
-        y = int(cy + r * math.sin(rad))
-        if 0 <= x < MATRIX_WIDTH and 0 <= y < MATRIX_HEIGHT:
-            bitmap[x, y] = 1
-    tile = displayio.TileGrid(bitmap, pixel_shader=palette)
-    group = displayio.Group()
-    group.append(tile)
-    while len(main_group) > 0:
-        main_group.pop()
-    main_group.append(group)
+    """Turn all pixels off when nothing is playing."""
+    pixels.fill((0, 0, 0))
+    pixels.show()
+
+
+def xy_to_index(x, y):
+    """Convert x,y coordinate to pixel index accounting for serpentine wiring."""
+    if y % 2 == 0:
+        return y * MATRIX_WIDTH + x
+    else:
+        return y * MATRIX_WIDTH + (MATRIX_WIDTH - 1 - x)
 
 
 def download_and_show_art(url):
-    """Download album art and display it statically."""
+    """Download album art, scale it to 16x16 and display on the matrix."""
     print(f"Downloading art: {url}")
     try:
         response = requests.get(url)
@@ -160,26 +153,32 @@ def download_and_show_art(url):
         )
         gc.collect()
 
-        tile = displayio.TileGrid(bitmap, pixel_shader=palette)
-        group = displayio.Group(scale=1)
-        group.append(tile)
+        # Scale image down to 16x16 by sampling evenly
+        src_w = bitmap.width
+        src_h = bitmap.height
 
-        while len(main_group) > 0:
-            main_group.pop()
-        main_group.append(group)
-        return bitmap, palette
+        for y in range(MATRIX_HEIGHT):
+            for x in range(MATRIX_WIDTH):
+                src_x = int(x * src_w / MATRIX_WIDTH)
+                src_y = int(y * src_h / MATRIX_HEIGHT)
+                color_index = bitmap[src_x, src_y]
+                color = palette[color_index]
+                r = (color >> 16) & 0xFF
+                g = (color >> 8) & 0xFF
+                b = color & 0xFF
+                pixels[xy_to_index(x, y)] = (r, g, b)
+
+        pixels.show()
+        gc.collect()
+        return True
     except Exception as e:
         print(f"Art download failed: {e}")
-        return None, None
+        return False
 
 
-import adafruit_imageload
-
+# ── Main loop ─────────────────────────────────────────────────────────────────
 current_art_url = None
-current_bitmap = None
-current_palette = None
-is_playing = False
-last_poll = -POLL_SECONDS  # Poll immediately on startup
+last_poll = -POLL_SECONDS
 
 show_idle()
 
@@ -194,13 +193,11 @@ while True:
 
         if art_url and art_url != current_art_url:
             current_art_url = art_url
-            current_bitmap, current_palette = download_and_show_art(art_url)
+            download_and_show_art(art_url)
         elif not art_url:
             current_art_url = None
-            current_bitmap = None
-            current_palette = None
             show_idle()
 
         gc.collect()
 
-    time.sleep(1.0 / FPS)
+    time.sleep(1)

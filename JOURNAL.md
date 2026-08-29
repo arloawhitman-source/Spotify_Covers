@@ -43,6 +43,7 @@ I finished linking the code from earlier which gets the current song and album c
 <img width="331" height="280" alt="image" src="https://github.com/user-attachments/assets/ded44f9e-6e39-4825-b161-0ba0600ec1e8" />
 
 I've decided to make the matrix myself so I've been researching some options and have decided on using 16 LED strips to cut down on the time of wiring over 1,000 LEDs in place.
+**Total time spent: 1.8 hour**
 
 ## Custom Matrix Parts - Jul 11, 2026, 2:36 PM - 1h
 

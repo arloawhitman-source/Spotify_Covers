@@ -5,6 +5,7 @@
 <img width="553" height="488" alt="image" src="https://github.com/user-attachments/assets/890de1ac-e780-4340-982e-453ff7ecb252" />
 
 I researched my needed materials including a 64 x 64 RGB matrix.I also found small tutorials to help me along with choosing the right supplies as well as with programing, as I want to focus more on the hardware not the software. I also found a github repository that can help with the programming portion.
+**Total time spent: 1 hour**
 
 ## Project Redesign - Jun 27, 2026, 3:13 PM - 3h
 

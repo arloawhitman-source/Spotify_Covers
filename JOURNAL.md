@@ -70,6 +70,8 @@ I wrote out instructions as well as attaching all files such as models and wirin
 
 ## Programming and Debugging Pi Pico - Aug 7th, 2026, 9:38 AM - 3.3h
 
+<img width="538" height="260" alt="image" src="https://github.com/user-attachments/assets/542ba551-e33e-4a13-84e6-3722f7414291" />
+
 I spent time debugging my code for the raspberry pi pico 2w. It was shockingly easy to get it to connect to WiFi however I did have some trouble importing libraries.
 
 ## Updating GitHub Repo and Code - Aug 9, 2026, 9:13 PM - 3.5h

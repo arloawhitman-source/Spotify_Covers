@@ -1,4 +1,4 @@
-# Total Time: 25.8h
+# Total Time: 39.4h
 
 ## Initial Research - Jun 26, 2026, 2:22 PM - 1h
 
@@ -67,3 +67,25 @@ I spent time finding options that were cheaper and found the most efficient way 
 <img width="1283" height="653" alt="image" src="https://github.com/user-attachments/assets/30dd34d8-da14-4f26-a52d-8d88b9a0a4a5" />
 
 I wrote out instructions as well as attaching all files such as models and wiring diagrams. Some things do vary based on the thickness of your back plate but you simply add or subtract from the screw length.
+
+## Programming and Debugging Pi Pico - Aug 7th, 2026, 9:38 AM - 3.3h
+
+I spent time debugging my code for the raspberry pi pico 2w. It was shockingly easy to get it to connect to WiFi however I did have some trouble importing libraries.
+
+## Updating GitHub Repo and Code - Aug 9, 2026, 9:13 PM - 3.5h
+
+<img width="1048" height="390" alt="image" src="https://github.com/user-attachments/assets/3da58b24-14d2-4375-bfb1-7e885c303856" />
+
+I changed my code to remove spinning and changed some libraries that I am using. I updated my repo to show my changes in both code and hardware. I also displayed the BOM in my README as asked. 
+
+## Rewrote Code For Raspberry Pi Pico 2w - aug 15, 2026, 10:09 PM - 1h
+
+<img width="839" height="594" alt="image" src="https://github.com/user-attachments/assets/74cc19c5-287e-4cb1-a14a-2c1117d6a7e5" />
+
+I rewrote the code so i could use a raspberry pi pico 2w and added neopixel and change the main loop to have helpers to make the code cleaner. 
+
+## Online Demo Of Working code - aug 20, 2026, 10:15 AM - 5.8h
+
+<img width="937" height="872" alt="image" src="https://github.com/user-attachments/assets/29568522-b1ab-450b-abc3-1c9900c78d65" />
+
+I coded a demo which takes the users codes (Doesn't save them) and displays the album cover as pixel art in varying resolutions. The programming took a while however hosting the site was easy.

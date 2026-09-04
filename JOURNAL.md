@@ -110,3 +110,5 @@ I coded a demo which takes the users codes (Doesn't save them) and displays the 
 
 ## Transferred From Macondo 
 I transferred from Macondo and I wasn't required to have either a hacktime or a lapse to show for my programming time. I was initially told I needed this but Cha Cha Cha Charles in slack said that I didn't need this and should add this note to my JOURNAL.
+<img width="1520" height="430" alt="image" src="https://github.com/user-attachments/assets/a7bc098b-3882-4199-9be0-e265a6d3e0d3" />
+

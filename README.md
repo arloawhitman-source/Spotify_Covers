@@ -1,10 +1,10 @@
 # Spotify Album Art Matrix Display
 
-I made a matrix that shows the album art of the music you are listening to on Spotify. It is a 16x16 RGB LED matrix display that is powered by the Raspberry Pi Pico 2 W. This connects to your WiFi network,and uses the Spotify Web API to get the album art of the song that is currently playing. The RGB matrix display is custom made and all the needed files are attached.
+I made a matrix that shows the album art of the music you are listening to on Spotify. It is a 16x16 RGB LED matrix display that is powered by the Raspberry Pi Pico 2 W. This connects to your WiFi network, and uses the Spotify Web API to get the album art of the song that is currently playing. The RGB matrix display is custom made and all the needed files are attached.
 
 ## How It Works
 
-When turned on the Pico connects to your WiFi. Then it talks to Spotify using a special token that it saved earlier. Every 5 seconds it checks with Spotify to see what song is playing now. When the song changes it gets the album art and shows it on the 16x16 matrix. It even spins the album art like a record while the music is playing. 
+When turned on the Pico connects to your WiFi. Then it talks to Spotify using a special token that it saved earlier. Every 5 seconds it checks with Spotify to see what song is playing now. When the song changes it gets the album art and shows it on the 16x16 matrix. It even spins the album art like a record while the music is playing.
 
 ## Hardware Required
 
@@ -102,6 +102,19 @@ From your power supply solder the ATC Fuse holder and insert the 10A ATC fuse. T
 
 ### Step 17
 Mont the aluminum plate to the 3d printed grid using nine M2x10mm screws (If you are using 5mm aluminum) Then on the back use doublesided sticky tape to secure all electronic componenets. Mount the heat sink using M3x6 screws (If using 5mm aluminum) on the pre drilled holes. Finally mount the wood frame using M3x25 screws (If using 5mm aluminum).
+
+## Electronics Assembly (Physical Connections)
+
+There is **no perfboard or PCB** in the current build — every connection between the Pico, the level shifter, the voltage regulator, and the LED matrix is made with direct point-to-point soldering, using heat shrink tubing over every joint for insulation and strain relief. Here's how the pieces physically connect to each other:
+
+- **LED data line → Level shifter:** The daisy-chained data line coming off the first LED (Step 12) is soldered straight to pin 3 of the 74HCT125 level shifter (Step 13). The level shifter's internal gate wiring (pins 4-7 tied together, pins 8-13 tied together, pin 7 to pin 8, pin 1 to pin 4) is done with short lengths of 26AWG wire bridging the pins directly, rather than on a board — each bridge is soldered dead-bug style between adjacent pins and covered in heat shrink once the whole chip is wired.
+- **Level shifter → Pico:** The level shifter's output (pin 2, labeled "1A") runs by wire directly to Pico pin 20 (a GPIO data pin), and the level shifter's ground (pin 13) runs to Pico pin 38 (GND). The level shifter's +5V input (pin 14) is fed from the voltage regulator output rather than from the Pico's own 3.3V rail.
+- **Voltage regulator → Pico/Level shifter:** The LM2596 buck regulator is adjusted to output 5V and its GND is tied to Pico pin 38 (the same ground point as the level shifter). Its VOUT is split with a single wire into two: one leg goes to Pico pin 39, and the other leg joins the +5V wire coming from the level shifter, so all three components share a common 5V rail and a common ground.
+- **Power supply → Voltage regulator / LED rails:** 12V from the Mean Well power supply passes through a 10A ATC fuse before splitting into two 16AWG runs: one feeds the LM2596 regulator's input, and the other feeds the LED matrix's +12V bus (the four-group harness described in Step 11). Grounds are handled the same way, so the whole system shares one star ground back at the power supply.
+- **Per-row LED power injection:** Each of the 16 LED rows gets its own +12V and GND wire soldered directly to the strip (Step 9), individually fused with a 0.5A fuse (Step 10), and then bundled in groups of four into the two main 16AWG power runs (Step 11) rather than routed through a board.
+- **Enclosure mounting:** All electronics (level shifter, voltage regulator, fuse holder) are secured to the back of the aluminum plate with double-sided sticky tape (Step 17) rather than screwed to a board, since there is no perfboard/PCB to mount them to.
+
+If a PCB is designed for a future revision, it would most likely combine the level shifter, voltage regulator, fusing, and terminal blocks onto a single small board mounted where the sticky-taped components currently sit, cutting down on the number of hand-soldered bridge wires described above.
 
 ## Software & Libraries
 

@@ -107,3 +107,6 @@ I rewrote the code so i could use a raspberry pi pico 2w and added neopixel and 
 
 I coded a demo which takes the users codes (Doesn't save them) and displays the album cover as pixel art in varying resolutions. The programming took a while however hosting the site was easy.
 **Total time spent: 5.8 hour**
+
+## Transferred From Macondo 
+I transferred from Macondo and I wasn't required to have either a hacktime or a lapse to show for my programming time. I was initially told I needed this but Cha Cha Cha Charles in slack said that I didn't need this and should add this note to my JOURNAL.

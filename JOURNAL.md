@@ -106,5 +106,5 @@ For this session I built a browser-based demo so people could see how the projec
 **Total time spent: 5.8 hour**
 
 ## Transferred From Macondo 
-I transferred from Macondo and I wasn't required to have either a hacktime or a lapse to show for my programming time. I was initially told I needed this but Cha Cha Cha Charles in slack said that I didn't need this and should add this note to my JOURNAL.
+I transferred from Macondo and I wasn't required to have either a hacktime or a lapse to show for my programming time. I was initially told I needed this but Cha Cha Cha Charles in slack said that I didn't need this and should add this note to my journal. I have been told MANY times that it is okay, so i'm making it clear that I DON'T have a hackatime or lapse.
 <img width="1520" height="430" alt="image" src="https://github.com/user-attachments/assets/a7bc098b-3882-4199-9be0-e265a6d3e0d3" />

@@ -101,6 +101,6 @@ I did another pass on the firmware, this time rewriting it specifically around t
 For this session I built a browser-based demo so people could see how the project works without needing the physical hardware in front of them. The demo takes a user's Spotify credentials just long enough to fetch their current album art (nothing is saved or stored server-side) and renders that album art as pixel art at a few different resolutions, so viewers can get a sense of how the image would look at, say, 16x16 versus a higher-resolution matrix. Most of the time in this session went into the actual client-side programming — handling the Spotify auth flow in a browser context and writing the pixelation/downsampling logic so the art would actually look intentional at low resolution rather than just blurry. Once the logic was working, deploying it as a hosted site was comparatively quick.
 **Total time spent: 5.8 hour**
 
-## Transferred From Macondo 
+## Transferred From Macondo - sep 1, 2026
 I transferred from Macondo and I wasn't required to have either a hacktime or a lapse to show for my programming time. I was initially told I needed this but Cha Cha Cha Charles in slack said that I didn't need this and should add this note to my journal. I have been told MANY times that it is okay, so i'm making it clear that I DON'T have a hackatime or lapse.
 <img width="1520" height="430" alt="image" src="https://github.com/user-attachments/assets/a7bc098b-3882-4199-9be0-e265a6d3e0d3" />

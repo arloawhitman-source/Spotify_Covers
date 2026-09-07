@@ -3,6 +3,8 @@
 ## Initial Research — Jun 26, 2026, 2:22 PM — 1h
 
 <img width="553" height="488" alt="image" src="https://github.com/user-attachments/assets/890de1ac-e780-4340-982e-453ff7ecb252" />
+<img width="453" height="470" alt="image" src="https://github.com/user-attachments/assets/e839eea0-1458-4847-8f35-4656cb64a8d4" />
+
 
 **What I did:** Researched RGB LED matrix panels and picked a target resolution of 64x64.
 
@@ -19,6 +21,7 @@ I also decided early on that this project's value was in the *hardware* — the 
 ## Project Redesign — Jun 27, 2026, 3:13 PM — 3h
 
 <img width="698" height="254" alt="image" src="https://github.com/user-attachments/assets/d250f90b-e8e5-4dab-b731-4536374f9443" />
+<img width="1750" height="376" alt="image" src="https://github.com/user-attachments/assets/d76ee919-7a29-4493-9fb1-0d34bbed4108" />
 
 **What I did:** Scrapped the Raspberry Pi Zero as the project's controller and switched to an ESP32-S3.
 
@@ -85,6 +88,8 @@ On top of that, once images were rendering, colors and orientation came out wron
 ## Researching Custom Matrix — Jul 11, 2026, 1:02 PM — 1.8h
 
 <img width="331" height="280" alt="image" src="https://github.com/user-attachments/assets/ded44f9e-6e39-4825-b161-0ba0600ec1e8" />
+<img width="833" height="437" alt="Screenshot 2026-07-11 133824" src="https://github.com/user-attachments/assets/8b4c6994-4676-40b1-8d67-3d5ce108b857" />
+
 
 **What I did:** Decided to abandon the premade matrix panel and build the 16x16 LED matrix myself from individual LED strips.
 

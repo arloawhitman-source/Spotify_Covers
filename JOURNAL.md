@@ -237,7 +237,7 @@ It took alot of trial and error. Install a library, reboot, get an import error,
 
 ---
 ## Changed and Designed the PCB for the raspberry Pi Pico - Sep 1, 2026 11:23 AM - 4.3h
-**What I did** I built and designed the pcb for the schematic I also re wired the schematic to make it clearer. This also allows me to reduce the amount of wire in my design and be able to make the components more compact on the back of the design.  <img width="712" height="592" alt="Screenshot 2026-10-24 151423" src="https://github.com/user-attachments/assets/c5e0dccf-d36a-486b-ad4e-b4550f755109" />
+**What I did** I built and designed the pcb for the schematic I also re wired the schematic to make it clearer. This also allows me to reduce the amount of wire in my design and be able to make the components more compact on the back of the design. I also spent time modeling the dividers for each led which can be found at this link https://cad.onshape.com/documents/0c28bbd7d9bd8c07a27f385c/w/98fcb0cbeb5147de1babadbe/e/57ae1f398318bceae9e217d8?renderMode=0&uiState=6add28ae75b28191225cac1e  <img width="712" height="592" alt="Screenshot 2026-10-24 151423" src="https://github.com/user-attachments/assets/c5e0dccf-d36a-486b-ad4e-b4550f755109" />
 **Total time spent: 4.3 hours**
 
 

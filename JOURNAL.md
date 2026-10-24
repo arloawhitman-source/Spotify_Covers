@@ -236,7 +236,7 @@ It took alot of trial and error. Install a library, reboot, get an import error,
 **Total time spent: 5.8 hours**
 
 ---
-## Changed and Designed the PCB for the raspberry Pi Pico - Sep 1, 2026
+## Changed and Designed the PCB for the raspberry Pi Pico - Sep 1, 2026 11:23 AM - 4.3h
 **What I did** I built and designed the pcb for the schematic I also re wired the schematic to make it clearer. This also allows me to reduce the amount of wire in my design and be able to make the components more compact on the back of the design.  <img width="712" height="592" alt="Screenshot 2026-10-24 151423" src="https://github.com/user-attachments/assets/c5e0dccf-d36a-486b-ad4e-b4550f755109" />
 **Total time spent: 4.3 hours**
 

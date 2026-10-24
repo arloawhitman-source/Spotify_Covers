@@ -26,6 +26,7 @@ When turned on the Pico connects to your WiFi. Then it talks to Spotify using a 
 * 3.5ft or longer two by four of wood
 * M2x10 screw (x9)
 * M3x6 screw (x4)
+* https://cad.onshape.com/documents/0c28bbd7d9bd8c07a27f385c/w/98fcb0cbeb5147de1babadbe/e/57ae1f398318bceae9e217d8?renderMode=0&uiState=6add28ae75b28191225cac1e
 
 ## Bill of Materials
 

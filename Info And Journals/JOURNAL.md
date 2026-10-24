@@ -125,7 +125,7 @@ Once images were showing up the colors and orientation were wrong on the first f
 - **Fusing:** Needed to protect the low voltage logic side AND the high current LED rails if something goes wrong. A short on the LED side shouldnt be able to kill the logic side and the other way around. Each one needs its own protection.
 - **Mean Well 12V/8.5A power supply:** I sized this on purpose. 256 WS2815 LEDs at full brightness pull enough current that a too small supply would sag. You'd see dimming or color differences across the matrix, with LEDs near the power injection point staying bright and the far ones visibly dim. I figured out about what full white full brightness would draw across all 256 LEDs and made sure the supply had real headroom above the worst case, instead of sizing it for average brightness.
 
-**What I left unfinished (and why):** By the end of this session I hadnt figured out the exact fuse amperage for the main 12V input or for each LED row. I knew fusing was needed in both places for safety but I hadnt done the current draw math yet. I also hadnt decided where the level shifter, regulator and fuse holder would physically go on the back of the board. I left both open on purpose and didnt just guess. Getting fuse sizing wrong is a safety issue not a "fix it later" thing. A too small fuse just blows all the time which is annoying. A too big fuse doesnt protect against a fault like its supposed to. I wasnt gonna pick a "probably fine" number without doing the math.
+**What I left unfinished (and why):** By the end of this session I hadnt figured out the exact fuse amperage for the main 12V input or for each LED row. I knew fusing was needed in both places for safety but I hadnt done the current draw math yet. I also hadnt decided where the level shifter, regulator and fuse holder would physicallry go on the back of the board. I left both open on purpose and didnt just guess. Getting fuse sizing wrong is a safety issue not a "fix it later" thing. A too small fuse just blows all the time which is annoying. A too big fuse doesnt protect against a fault like its supposed to. I wasnt gonna pick a "probably fine" number without doing the math.
 
 **Total time spent: 2.5 hours**
 
@@ -145,7 +145,7 @@ Once images were showing up the colors and orientation were wrong on the first f
 
 ---
 
-## Double-Checked Diagrams and Parts — Jul 13, 2026, 4:14 PM — 2h
+## Double-Checked Ddiagrams and Parts — Jul 13, 2026, 4:14 PM — 2h
 
 <img width="3024" height="4032" alt="lower me plz" src="https://github.com/user-attachments/assets/83df6204-6950-49c1-bb99-31e094f88c25" />
 
@@ -221,7 +221,7 @@ It took alot of trial and error. Install a library, reboot, get an import error,
 
 ---
 
-## Online Demo of Working Code — Aug 20, 2026, 10:15 AM — 5.8h
+## Online Demo of Worrking Code — Aug 20, 2026, 10:15 AM — 5.8h
 
 <img width="937" height="872" alt="image" src="https://github.com/user-attachments/assets/29568522-b1ab-450b-abc3-1c9900c78d65" />
 
@@ -236,9 +236,16 @@ It took alot of trial and error. Install a library, reboot, get an import error,
 **Total time spent: 5.8 hours**
 
 ---
+## Changed and Designed the PCB for the raspberry Pi Pico - Sep 1, 2026
+**What I did** I built and designed the pcb for the schematic I also re wired the schematic to make it clearer. This also allows me to reduce the amount of wire in my design and be able to make the components more compact on the back of the design.  <img width="712" height="592" alt="Screenshot 2026-10-24 151423" src="https://github.com/user-attachments/assets/c5e0dccf-d36a-486b-ad4e-b4550f755109" />
+**Total time spent: 4.3 hours**
 
-## Transferred From Macondo — Sep 1, 2026
+
+---
+## Transferred From Macondo — Sep 18, 2026
 
 I transferred over from Macondo. I was originally told I'd need either a Hackatime record or a lapse to account for my programming time on this project, but Charles confirmed in Slack that this isnt required for a transfer and asked me to note that in my journal. Ive been told this multiple times now so to be clear: **I do not have a Hackatime record or a lapse, and Ive been told thats expected/fine for a transfer.**
 
 <img width="1520" height="430" alt="image" src="https://github.com/user-attachments/assets/a7bc098b-3882-4199-9be0-e265a6d3e0d3" />
+
+
